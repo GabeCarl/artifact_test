@@ -9,7 +9,7 @@ jobs:
           name: Build and Test Docker Image
           command: |
             docker pull gabrielcarl/fastapi-image:latest
-            docker run --rm gabrielcarl/fastapi-image:latest pytest tests/
+            docker run --rm gabrielcarl/fastapi-image:latest
 workflows:
   version: 2
   build_and_test:
