@@ -5,4 +5,13 @@ jobs:
       - image: cimg/python:3.8
     steps:
       - checkout
-      - run: echo "Building with Python 3.8"
+      - run:
+          name: Build and Test Docker Image
+          command: |
+            docker pull gabrielcarl/fastapi-image:latest
+            docker run --rm gabrielcarl/fastapi-image:latest pytest tests/
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
