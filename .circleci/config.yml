@@ -13,11 +13,15 @@ jobs:
           command: |
             docker build -t image-test ./CICD-Project/
       - run:
-          name: Run Docker Container
-          command: |
-            docker run image-test
+          name: Login no Docker Hub
+          command: echo $DOCKERHUB_TOKEN | docker login -u $DOCKERHUB_USER --password-stdin
       - run:
-          name: remove Docker
+          name: Enviando Para DockerHub
           command: |
-            docker stop image-test
+            
+            docker tag image-test $DOCKERHUB_USERNAME/image-test:latest
+
+            docker push $DOCKERHUB_USERNAME/image-test:latest
+
+    
             
