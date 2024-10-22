@@ -11,10 +11,13 @@ jobs:
       - run:
           name: Build Docker Image
           command: |
-            docker pull gabrielcarl/fastapi-image:latest
+            docker build -t image-test ./CICD-Project/
       - run:
           name: Run Docker Container
           command: |
-            docker run --rm gabrielcarl/fastapi-image:latest /
-            docker stop gabrielcarl/fastapi-image:latest
+            docker run image-test
+      - run:
+          name: remove Docker
+          command: |
+            docker stop image-test
             
