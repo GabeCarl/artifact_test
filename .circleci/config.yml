@@ -19,9 +19,9 @@ jobs:
           name: Enviando Para DockerHub
           command: |
             
-            docker tag image-test $DOCKERHUB_USERNAME/image-test:latest
+            docker tag image-test $DOCKERHUB_USER/image-test:latest
 
-            docker push $DOCKERHUB_USERNAME/image-test:latest
+            docker push $DOCKERHUB_USER/image-test:latest
 
     
             
